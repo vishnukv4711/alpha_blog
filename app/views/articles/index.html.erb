@@ -6,7 +6,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Actions</th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -15,8 +15,13 @@
       <tr>
         <td><%= a.title %></td>
         <td><%= a.description%></td>
-        <td>the actions</td>
+        <td><%= button_to "SHOW", a, method: :get %></td>
+        <td><%= button_to "EDIT", edit_article_path(a), method: :get %></td>
+        <td><%= button_to "DELETE", a, method: :delete, data: { confirm: "Are you sure?" }  %></td>
       </tr>
     <%end %>
   </tbody>
 </table>
+<br>
+<br>
+<%= button_to "CREATE NEW", new_article_path, method: :get %>

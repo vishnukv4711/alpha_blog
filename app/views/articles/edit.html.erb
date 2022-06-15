@@ -29,3 +29,9 @@
     <%=f.submit %>
   </p>
 <%end %>
+<table>
+  <tr>
+    <td><%=button_to "HOME", articles_path, method: :get%></td>
+    <td><%=button_to "BACK", article_path(@article.id), method: :get%></td>
+  </tr>
+</table>

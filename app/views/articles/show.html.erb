@@ -1,4 +1,14 @@
 <h1>This is the show action</h1>
+<%#debugger %>
 
 <p><strong>Title</strong>: <%= @article.title %></p>
 <p><strong>Description</strong>: <%=@article.description %></p>
+<br>
+<br>
+<table>
+  <tr>
+    <td><%= button_to "EDIT", edit_article_path(@article.id), method: :get %></td>
+    <td><%= button_to "DELETE", article_path(@article.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
+  </tr>
+</table>
+<p><%= button_to "BACK", articles_path, method: :get %></p>

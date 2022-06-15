@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
+    # debugger
     @articles = Article.all
   end
 
@@ -18,7 +19,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(params.require(:article).permit(:title, :description))
-     debugger
+
     # @article = Article.new
     # @article.title = params[:article][:title]
     # @article.description = params[:article][:description]
@@ -31,7 +32,6 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    debugger
     @article = Article.find(params[:id])
     # @article.title = params[:article][:title]
     # @article.description = params[:article][:description]
@@ -42,6 +42,14 @@ class ArticlesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    # debugger
+    @article = Article.find(params[:id])
+    flash[:notce] = "Successfully deleted element at index - #{params[:id]}"
+    @article.destroy
+    redirect_to articles_path
   end
 
 end
