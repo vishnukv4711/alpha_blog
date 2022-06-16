@@ -1,27 +1,33 @@
 <h1>This is the index page</h1>
+<%#debugger %>
+<% if @articles.empty? %>
+  <h1>NO ARTICLES TO SHOW</h1>
 
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |a|%>
+<% else %>
+  <table>
+    <thead>
       <tr>
-        <td><%= a.title %></td>
-        <td><%= a.description%></td>
-        <td><%= button_to "SHOW", a, method: :get %></td>
-        <td><%= button_to "EDIT", edit_article_path(a), method: :get %></td>
-        <td><%= button_to "DELETE", a, method: :delete, data: { confirm: "Are you sure?" }  %></td>
+        <th>Title</th>
+        <th>Description</th>
+        <th colspan="3">Actions</th>
       </tr>
-    <%end %>
-  </tbody>
-</table>
-<br>
-<br>
+    </thead>
+
+    <tbody>
+      <% @articles.each do |a|%>
+        <tr>
+          <td><%= a.title %></td>
+          <td><%= a.description%></td>
+          <td><%= button_to "SHOW", a, method: :get %></td>
+          <td><%= button_to "EDIT", edit_article_path(a), method: :get %></td>
+          <td><%= button_to "DELETE", a, method: :delete, data: { confirm: "Are you sure?" }  %></td>
+        </tr>
+      <%end %>
+    </tbody>
+  </table>
+  <br>
+  <br>
+<% end %>
 <%= button_to "CREATE NEW", new_article_path, method: :get %>
+<br><br><br><br><br><br>
+<%= button_to "HOME", root_path, method: :get %>
