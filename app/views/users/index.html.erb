@@ -1,0 +1,20 @@
+<h1>USERS LISTING PAGE</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%@users.each do |user|%>
+      <tr>
+        <td><%=user.username %></td>
+        <td colspan="2"><%=user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br>
+<%=button_to 'CREATE NEW', new_user_path, method: :get%>

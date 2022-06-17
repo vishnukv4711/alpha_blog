@@ -10,6 +10,7 @@
         <th>Title</th>
         <th>Description</th>
         <th colspan="3">Actions</th>
+        <th colspan="2"> User</th>
       </tr>
     </thead>
 
@@ -21,6 +22,7 @@
           <td><%= button_to "SHOW", a, method: :get %></td>
           <td><%= button_to "EDIT", edit_article_path(a), method: :get %></td>
           <td><%= button_to "DELETE", a, method: :delete, data: { confirm: "Are you sure?" }  %></td>
+          <td><%= a.user.username %></td>
         </tr>
       <%end %>
     </tbody>
