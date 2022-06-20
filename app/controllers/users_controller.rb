@@ -1,22 +1,18 @@
 class UsersController < ApplicationController
 
-  def index
-    @users = User.all
-  end
-
   def new
+    # debugger
     @user = User.new
   end
-
+  # debugger
   def create
     # debugger
-    @user = User.new(params.require(:user).permit(:username,:email, :password))
+    @user = User.new(params.require(:user).permit(:username, :email, :password))
     if @user.save
-      flash[:notice] = "The user got created"
-      redirect_to users_path
+      flash[:notice] = "Welcome to the AlphaBlog #{@user.username}, you have successfully singed up.!!!!"
+      redirect_to articles_path
     else
-      render 'users/new'
+      render 'new'
     end
   end
-
 end

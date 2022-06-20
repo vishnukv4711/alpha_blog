@@ -1,4 +1,5 @@
-<%=form_with(model: @users, local: true) do |f|%>
+<%=form_with(model: @user, local: true) do |f|%>
+
   <p>
     <%=f.label :username %><br>
     <%=f.text_field :username %>
@@ -12,6 +13,6 @@
     <%=f.password_field :password %>
   </p>
   <p>
-    <%=f.submit %>
+    <%=f.submit "SIGN UP"%>
   </p>
 <%end%>
