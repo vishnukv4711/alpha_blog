@@ -24,10 +24,10 @@
     <%=f.label :password %><br>
     <%=f.text_field :password %>
   </p>
-  <p>
-    <%=f.label :"re-enter password" %><br>
-    <%=f.text_field :password %>
-  </p>
+<!--  <p>-->
+<!--    <%#=f.label :"re-enter password" %><br>-->
+    <%#=f.text_field :password_2 %>
+<!--  </p>-->
   <table>
       <td><%=button_to 'CANCEL', users_path ,method: :get%></td>
       <td><%=f.submit "CREATE USER"%></td>

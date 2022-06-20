@@ -9,11 +9,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    debugger
-    @user = User.new(params.require(:user).permit(:username,:email))
+    # debugger
+    @user = User.new(params.require(:user).permit(:username,:email, :password))
     if @user.save
       flash[:notice] = "The user got created"
       redirect_to users_path
+    else
+      render 'users/new'
     end
   end
 
