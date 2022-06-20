@@ -1,6 +1,6 @@
 <h1>Create new article</h1>
 <%#debugger %>
 
-<%= render 'form_error' %>
+<%= render 'shared/errors', obj:@article %>
 <%= render 'form' %>
 <%= button_to "BACK", articles_path, method: :get %>

@@ -1,8 +1,8 @@
-<% if @article.errors.any? %>
+<% if obj.errors.any? %>
   <div>
     <h2>The following errors prevented the articles from saving the article</h2>
     <ul>
-      <% @article.errors.full_messages.each do |msg| %>
+      <% obj.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
