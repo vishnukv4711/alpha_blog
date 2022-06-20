@@ -37,6 +37,7 @@ class ArticlesController < ApplicationController
     # @article.title = params[:article][:title]
     # @article.description = params[:article][:description]
     # if @article.save
+     debugger
      if @article.update(article_params)
       flash[:notice] = "Article is edited succesfully!!!!!!!"
       redirect_to @article
