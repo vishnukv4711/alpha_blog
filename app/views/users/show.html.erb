@@ -2,7 +2,8 @@
 <br>
 <br>
 <h2 align="center"><%=@user.username %>'s profile</h2>
-<%=gravatar_for(@user,200) %>
+<%#=gravatar_for(@user,200) %>
+<img src="<%=gravatar_for(@user,200) %>" alt="">
 <br>
 <br>
 <h3 align="center">Articles by <%=@user.username %></h3>
@@ -25,3 +26,5 @@
     <% end %>
   </tbody>
 </table>
+
+<p><%= button_to "BACK", users_path, method: :get %></p>

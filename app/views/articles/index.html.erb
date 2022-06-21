@@ -22,7 +22,7 @@
           <td><%= button_to "SHOW", a, method: :get %></td>
           <td><%= button_to "EDIT", edit_article_path(a), method: :get %></td>
           <td><%= button_to "DELETE", a, method: :delete, data: { confirm: "Are you sure?" }  %></td>
-          <td><%= a.user.username %></td>
+          <td><%= link_to a.user.username, user_path(a.user.id) %></td>
         </tr>
       <%end %>
     </tbody>
