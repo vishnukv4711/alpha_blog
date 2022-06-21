@@ -1,0 +1,26 @@
+<h1 align="center">USER DETAILS</h1>
+<br>
+<br>
+<h2 align="center"><%=@user.username %>'s profile</h2>
+<br>
+<br>
+<h3 align="center">Articles by <%=@user.username %></h3>
+<br>
+<br>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@articles.each do |article| %>
+      <tr>
+        <td><%=article.title %></td>
+        <td align="center"><%=article.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
