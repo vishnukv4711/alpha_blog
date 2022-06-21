@@ -26,5 +26,10 @@
     <% end %>
   </tbody>
 </table>
-
+<br><br>
+<table>
+  <tr>
+    <%=link_to 'EDIT', edit_user_path(@user) %>
+  </tr>
+</table>
 <p><%= button_to "BACK", users_path, method: :get %></p>

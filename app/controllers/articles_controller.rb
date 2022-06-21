@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = User.first                                #bcz currently articles/new has no user col and without user article creation throws an error.
 
     # @article = Article.new
     # @article.title = params[:article][:title]

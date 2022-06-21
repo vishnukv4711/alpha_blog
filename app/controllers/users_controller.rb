@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :update, :edit]
 
 
   def show
@@ -21,10 +22,10 @@ class UsersController < ApplicationController
 
   def create
     # debugger
-    @user = User.new(params.require(:user).permit(:username, :email, :password))
+    @user = User.new(user_params)
     if @user.save
       flash[:notice] = "Welcome to the AlphaBlog #{@user.username}, you have successfully singed up.!!!!"
-      redirect_to articles_path
+      redirect_to users_path
     else
       render 'new'
     end
@@ -33,7 +34,6 @@ class UsersController < ApplicationController
 
   def edit
     # debugger
-    @user = User.find(params[:id])
   end
 
 
@@ -41,12 +41,22 @@ class UsersController < ApplicationController
   def update
     # debugger
     @user = User.find(params[:id])
-    if @user.update(params.require(:user).permit(:username, :email, :password))
+    if @user.update(user_params)
       flash[:notice] = "USER INFO UPDATED SUCCESSFULLY"
-      redirect_to articles_path
+      redirect_to user_path(@user)
     else
       render 'edit'
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

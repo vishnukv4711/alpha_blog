@@ -8,7 +8,10 @@
     <%= f.label :description %> <br>
     <%= f.text_area :description %>
   <p>
-    <%=@article.user.username if @article.user%>
+    <%if @article.user %>
+      <%#debugger %>
+      by <%=link_to @article.user.username, user_path(@article.user)%>
+    <%end %>
   </p>
   <p>
     <%=f.submit %>
