@@ -1,4 +1,6 @@
 <h1 align="center">USER DETAILS</h1>
+<h3 align="center"><%=will_paginate @articles %></h3>
+
 <br>
 <br>
 <h2 align="center"><%=@user.username %>'s profile</h2>
@@ -33,3 +35,4 @@
   </tr>
 </table>
 <p><%= button_to "BACK", users_path, method: :get %></p>
+<h3 align="center"><%=will_paginate @articles %></h3>

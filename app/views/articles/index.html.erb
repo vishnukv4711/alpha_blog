@@ -1,5 +1,6 @@
-<h1>This is the index page</h1>
+<h1 align="center">ARTICLE'S LISTING</h1>
 <%#debugger %>
+<h3 align="center"><%=will_paginate @articles %></h3>
 <% if @articles.empty? %>
   <h1>NO ARTICLES TO SHOW</h1>
 
@@ -33,3 +34,4 @@
 <%= button_to "CREATE NEW", new_article_path, method: :get %>
 <br><br><br><br><br><br>
 <%= button_to "HOME", root_path, method: :get %>
+<h3 align="center"><%=will_paginate @articles %></h3>
