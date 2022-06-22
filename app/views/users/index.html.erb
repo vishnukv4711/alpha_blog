@@ -12,9 +12,10 @@
     </tr>
     <td><%= pluralize(user.articles.count, "article")%></td>
     <td><%=link_to 'view profile', user_path(user) %></td>
-    <td><%=link_to 'edit profile', edit_user_path(user) %></td>
+<!--    <td><%#=link_to 'edit profile', edit_user_path(user) %></td>-->
 <% end %>
 </table>
 <br><br><br>
-<%=button_to 'ARTICLES LISTING', articles_path, method: :get %>
+<p><%=link_to 'ARTICLES LISTING', articles_path, method: :get %></p>
+<p><%=link_to 'BACK<<', '#' %></p>
 <h3 align="center"><%=will_paginate @users %></h3>

@@ -1,0 +1,17 @@
+<h1 align="center">LOGIN TO ALPHA BLOG</h1>
+
+
+<%= form_with(scope: :session, url: login_path) do |f| %>
+  <p align="center">
+    <%=f.label :username %><br>
+    <%=f.text_field :username, placeholder:"Enter your username"%>
+  </p>
+  <p align="center">
+    <%=f.label :password %><br>
+    <%=f.password_field :password, placeholder:"Enter your password" %>
+  </p>
+  <p align="center">
+    <%=f.submit 'login'%>
+  </p>
+<%end %>
+<%=link_to '<<BACK', :back %>

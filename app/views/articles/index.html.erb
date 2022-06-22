@@ -1,17 +1,18 @@
-<h1 align="center">ARTICLE'S LISTING</h1>
+<h1><%=link_to 'ALPHA BLOG', root_path %></h1>
+<h1 align="center">LISTING ALL ARTICLES </h1>
 <%#debugger %>
 <h3 align="center"><%=will_paginate @articles %></h3>
 <% if @articles.empty? %>
-  <h1>NO ARTICLES TO SHOW</h1>
+  <h1 align="center">NO ARTICLES TO SHOW</h1>
 
 <% else %>
-  <table>
+  <table align="center">
     <thead>
       <tr>
         <th>Title</th>
         <th>Description</th>
-        <th colspan="3">Actions</th>
-        <th colspan="2"> User</th>
+        <th>Actions</th>
+        <th> User</th>
       </tr>
     </thead>
 
@@ -21,8 +22,10 @@
           <td><%= a.title %></td>
           <td><%= a.description%></td>
           <td><%= button_to "SHOW", a, method: :get %></td>
-          <td><%= button_to "EDIT", edit_article_path(a), method: :get %></td>
-          <td><%= button_to "DELETE", a, method: :delete, data: { confirm: "Are you sure?" }  %></td>
+          <%#if current_user==a.user.username %>
+<!--            <td><%#= button_to "EDIT", edit_article_path(a), method: :get %></td>-->
+<!--            <td><%#= button_to "DELETE", a, method: :delete, data: { confirm: "Are you sure?" }  %></td>-->
+          <%#end %>
           <td><%= link_to a.user.username, user_path(a.user.id) %></td>
         </tr>
       <%end %>
@@ -31,7 +34,34 @@
   <br>
   <br>
 <% end %>
-<%= button_to "CREATE NEW", new_article_path, method: :get %>
+<p align="center"><%= link_to "CREATE NEW", new_article_path, method: :get %></p>
 <br><br><br><br><br><br>
-<%= button_to "HOME", root_path, method: :get %>
+<table>
+  <tr>
+    <td><%= button_to "HOME", root_path, method: :get %></td>
+    <%unless current_user %>
+      <td><%=button_to 'SIGN UP', signup_path ,method: :get%></td>
+      <td><%=button_to 'LOG IN', login_path, method: :get %></td>
+    <%end%>
+    <% if logged_in?%>
+      <td><%=button_to 'LOG OUT', logout_path,method: :delete%></td>
+    <%end %>
+  </tr>
+</table>
+<%=link_to 'BACK<<', :back   %>
 <h3 align="center"><%=will_paginate @articles %></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

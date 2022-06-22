@@ -1,19 +1,21 @@
 <%=form_with(model: @user, local: true) do |f|%>
 
-  <p>
+  <p align="center">
     <%=f.label :username %><br>
-    <%=f.text_field :username %>
+    <%=f.text_field :username, placeholder: "Choose a  user name" %>
   </p>
-  <p>
+  <p align="center">
     <%=f.label :email %><br>
-    <%=f.email_field :email %>
+    <%=f.email_field :email, placeholder: "Choose an email" %>
   </p>
-  <p>
+  <p align="center">
     <%=f.label :password %><br>
-    <%=f.password_field :password %>
+    <%=f.password_field :password, placeholder: "Choose a password" %>
   </p>
-  <p>
+  <p align="center">
     <%# debugger %>
     <%=f.submit(@user.new_record? ? "SIGN UP" :"UPDATE ACCOUNT")%>
   </p>
 <%end%>
+<!--<p><%#=link_to 'BACK<<',request.referer.present? ? request.referer : default_path %></p>-->
+<p><%=link_to '<<BACK',:back %></p>

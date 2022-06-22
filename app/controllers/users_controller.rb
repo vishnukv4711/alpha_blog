@@ -25,8 +25,9 @@ class UsersController < ApplicationController
     # debugger
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "Welcome to the AlphaBlog #{@user.username}, you have successfully singed up.!!!!"
-      redirect_to users_path
+      redirect_to user_path(@user)
     else
       render 'new'
     end
@@ -43,6 +44,7 @@ class UsersController < ApplicationController
     # debugger
     @user = User.find(params[:id])
     if @user.update(user_params)
+      # debugger
       flash[:notice] = "USER INFO UPDATED SUCCESSFULLY"
       redirect_to user_path(@user)
     else

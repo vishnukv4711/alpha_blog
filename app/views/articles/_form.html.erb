@@ -1,19 +1,19 @@
 <%= form_with(model: @article, local: true) do |f| %>
 
-  <p>
+  <p align="center">
     <%= f.label :title %> <br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: "Enter the title" %>
   </p>
-  <p>
+  <p align="center">
     <%= f.label :description %> <br>
-    <%= f.text_area :description %>
-  <p>
+    <%= f.text_area :description, placeholder: "Give the description" %>
+  <p align="center">
     <%if @article.user %>
       <%#debugger %>
       by <%=link_to @article.user.username, user_path(@article.user)%>
     <%end %>
   </p>
-  <p>
+  <p align="center">
     <%=f.submit %>
   </p>
 <%end %>

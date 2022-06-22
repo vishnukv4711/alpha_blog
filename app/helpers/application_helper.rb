@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def gravatar_for(user, size = 80)
     email_address = user.email
     hash = Digest::MD5.hexdigest(email_address)
@@ -6,4 +7,8 @@ module ApplicationHelper
     return gravatar_image
     # image_tag(gravatar_image,alt: user.username)
   end
+
+
+
+
 end

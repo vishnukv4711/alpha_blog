@@ -1,8 +1,8 @@
-<h1>Create new article</h1>
+<h1 align="center">Create new article</h1>
 <%#debugger %>
 
 <%= render 'shared/errors', obj:@article %>
 <%= render 'form' %>
 
 
-<%= button_to "BACK", articles_path, method: :get %>
+<%= link_to "BACK",:back %>
