@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
+    # debugger
     !!current_user
   end
 
@@ -20,14 +21,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def intented_user
+  def article_crud_authorization
     # debugger
     # unless Article.find(params[:id])[:user_id] == session[:user_id]
     unless current_user == @article.user
-      flash[:alert] = "Only #{owner} can perform the action"
+      flash[:alert] = "Only #{owner} can perform that action"
       redirect_to articles_path
     end
   end
+
+  def user_crud_authorization
+    unless current_user == @user
+      flash[:alert] = "Only #{@user.username} can perform that action"
+      redirect_to articles_path
+    end
+  end
+
+
 
   private
 

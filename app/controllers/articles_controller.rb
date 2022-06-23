@@ -1,8 +1,13 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  # before_action :require_user, :intented_user, except: [:show,:index]        my code
+  # before_action :require_user, :article_crud_authorization, except: [:show,:index]        my code## reason:- require_user is called first except for "index" and "show" which should
+  #                                                                                              be accessible for any user. So a non logged user should have access to these
+  #                                                                                              2 only. And even if a new person is logged in they should have access only to
+  #                                                                                              "new" and "create" . "Edit", "update" and "destroy" are om;y for the person who
+  #                                                                                              created that article and that check is done by intended_user. my code is correct
+  #                                                                                              but checking "new" and "create" is an unnecessary step.
   before_action :require_user, except: [:show,:index]
-  before_action :intented_user, only: [:edit, :update, :destroy]
+  before_action :article_crud_authorization, only: [:edit, :update, :destroy]
 
   def show
   end
@@ -23,8 +28,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    # debugger
     @article = Article.new(article_params)
-    @article.user = User.first                                #bcz currently articles/new has no user col and without user article creation throws an error.
+    @article.user = User.find(session[:user_id])                                #bcz currently articles/new has no user col and without user article creation throws an error.
 
     # @article = Article.new
     # @article.title = params[:article][:title]
@@ -41,7 +47,7 @@ class ArticlesController < ApplicationController
     # @article.title = params[:article][:title]
     # @article.description = params[:article][:description]
     # if @article.save
-     debugger
+    #  debugger
      if @article.update(article_params)
       flash[:notice] = "Article is edited succesfully!!!!!!!"
       redirect_to @article

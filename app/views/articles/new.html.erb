@@ -1,8 +1,9 @@
 <h1 align="center">Create new article</h1>
+<p align="center"><strong><%= "You are logged in as #{current_user.username}" if logged_in?%> </strong></p>
 <%#debugger %>
 
 <%= render 'shared/errors', obj:@article %>
 <%= render 'form' %>
 
-
-<%= link_to "BACK",:back %>
+<%#debugger %>
+<%= link_to "<<BACK",:back %>
