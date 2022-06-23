@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :edit]
+  before_action :set_user, only: [:show, :update, :edit, :destroy]
   before_action :require_user, only: [:edit, :update]
   before_action :user_crud_authorization, only: [:edit, :update]
 
@@ -38,6 +38,14 @@ class UsersController < ApplicationController
 
   def edit
     # debugger
+  end
+
+  def destroy
+    # @user.articles.destroy_all
+    @user.destroy
+    session[:user_id] = nil
+    flash[:notice] = "Your account and articles are deleted successfully"
+    redirect_to root_path
   end
 
 

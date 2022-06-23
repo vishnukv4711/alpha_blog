@@ -37,6 +37,7 @@
     <tr>
       <td align="center"><%=button_to 'EDIT', edit_user_path(@user), method: :get %></td>
       <td align="center"><%=button_to 'LOG OUT', logout_path, method: :delete %></td>
+      <td align="center"><%=button_to 'DELETE ACCOUNT', user_path(@user), method: :delete %></td>
     </tr>
   </table>
 <%end %>
