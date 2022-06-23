@@ -1,6 +1,7 @@
 <h1><%=link_to 'ALPHA BLOG', root_path %></h1>
-<p align="center"><strong><%= "You are logged in as #{current_user.username}" if logged_in?%> </strong></p>
-
+<%if logged_in? %>
+  <p align="center"><strong><%= "You are logged in as #{current_user.username}" %><%="(Admin)" if current_user.admin? %> </strong></p>
+<%end %>
 <h1 align="center">LISTING ALL ARTICLES </h1>
 <%#debugger %>
 <h3 align="center"><%=will_paginate @articles %></h3>

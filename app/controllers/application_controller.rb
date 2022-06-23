@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def article_crud_authorization
     # debugger
     # unless Article.find(params[:id])[:user_id] == session[:user_id]
-    unless current_user == @article.user
+    unless current_user == @article.user || current_user.admin?
       flash[:alert] = "Only #{owner} can perform that action"
       redirect_to articles_path
     end

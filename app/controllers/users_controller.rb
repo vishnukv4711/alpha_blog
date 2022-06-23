@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Welcome to the AlphaBlog #{@user.username}, you have successfully singed up.!!!!"
-      redirect_to user_path(@user)
+      redirect_to articles_path
     else
       render 'new'
     end
@@ -43,8 +43,8 @@ class UsersController < ApplicationController
   def destroy
     # @user.articles.destroy_all
     @user.destroy
-    session[:user_id] = nil
-    flash[:notice] = "Your account and articles are deleted successfully"
+    session[:user_id] = nil if @user == current_user
+    flash[:notice] = "Account and the associated articles are deleted successfully"
     redirect_to root_path
   end
 

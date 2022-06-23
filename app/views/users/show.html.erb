@@ -30,15 +30,22 @@
 </table>
 <br><br>
 
-<p><%= link_to "<<BACK",:back%></p>
-<%#if current_user %>
-<%if current_user == @user %>
-  <table align="center">
-    <tr>
-      <td align="center"><%=button_to 'EDIT', edit_user_path(@user), method: :get %></td>
-      <td align="center"><%=button_to 'LOG OUT', logout_path, method: :delete %></td>
-      <td align="center"><%=button_to 'DELETE ACCOUNT', user_path(@user), method: :delete %></td>
-    </tr>
-  </table>
+<%if logged_in? %>
+  <%if current_user == @user%>
+    <table align="center">
+      <tr>
+        <td><%=button_to 'EDIT', edit_user_path(@user), method: :get %></td>
+        <td><%=button_to 'LOG OUT', logout_path, method: :delete %></td>
+        <td><%=button_to 'DELETE ACCOUNT', user_path(@user), method: :delete %></td>
+      </tr>
+    </table>
+    <%elsif  current_user.admin?%>
+      <table align="center">
+        <tr>
+          <td><%=button_to 'DELETE ACCOUNT', user_path(@user), method: :delete %></td>
+        </tr>
+      </table>
+  <%end %>
 <%end %>
+<p><%= link_to "<<BACK",:back%></p>
 <h3 align="center"><%=will_paginate @articles %></h3>
