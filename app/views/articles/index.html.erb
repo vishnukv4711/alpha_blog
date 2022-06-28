@@ -39,6 +39,9 @@
 <% end %>
 <p align="center"><%= link_to "CREATE NEW", new_article_path, method: :get %></p>
 <br><br><br><br><br><br>
+<div class="container", align="right">
+  <%=button_to "CATEGORIES", categories_path, method: :get %>
+</div>
 <table>
   <tr>
     <td><%= button_to "HOME", root_path, method: :get %></td>
