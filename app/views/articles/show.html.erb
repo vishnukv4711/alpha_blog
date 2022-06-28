@@ -6,6 +6,21 @@
 
 <p align="center"><strong>Title</strong>: <%= @article.title %></p>
 <p align="center"><strong>Description</strong>: <%=@article.description %></p>
+<div class="container" align="right">
+  <h4 style="padding-right: 20px">Categories:</h4>
+  <table>
+    <thead>
+
+    </thead>
+    <tbody>
+      <%@article.categories.each do |category| %>
+        <tr>
+          <td><%=link_to category.name, category_path(category) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 <br>
 <%#debugger %>

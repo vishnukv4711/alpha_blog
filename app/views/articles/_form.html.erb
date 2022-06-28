@@ -8,6 +8,10 @@
     <%= f.label :description %> <br>
     <%= f.text_area :description, placeholder: "Give the description" %>
   <p align="center">
+    <%= f.label :category %> <br>
+    <%=f.collection_select(:category_ids, Category.all, :id, :name, { prompt: "Please Select Category" }, { multiple: true }) %>
+  </p>
+  <p align="center">
     <%if @article.user %>
       <%#debugger %>
       by <%=link_to @article.user.username, user_path(@article.user)%>

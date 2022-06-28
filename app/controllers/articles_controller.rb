@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
   def create
     # debugger
     @article = Article.new(article_params)
-    @article.user = User.find(session[:user_id])                                #bcz currently articles/new has no user col and without user article creation throws an error.
+    @article.user = User.find(session[:user_id])                              #wrong comment#  #bcz currently articles/new has no user col and without user article creation throws an error.
 
     # @article = Article.new
     # @article.title = params[:article][:title]
@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, category_ids:[])
   end
 
 

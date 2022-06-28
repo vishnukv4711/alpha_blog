@@ -4,3 +4,11 @@
 <%end %>
 <h1 align="center">Category</h1>
 <p align="center"><strong>name</strong> : <%= @category.name %></p>
+<%@category.articles.each do |article| %>
+  <table align="center">
+    <tr>
+      <td><%=link_to article.title, article_path(article) %></td>
+    </tr>
+  </table>
+<% end %>
+<%=link_to "<<BACK", :back %>
