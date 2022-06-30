@@ -3,12 +3,21 @@
   <p align="center"><strong><%= "You are logged in as #{current_user.username}" %><%="(Admin)" if current_user.admin? %> </strong></p>
 <%end %>
 <h1 align="center">Category</h1>
-<p align="center"><strong>name</strong> : <%= @category.name %></p>
-<%@category.articles.each do |article| %>
-  <table align="center">
+
+
+<h3 align="center"><%=will_paginate @articles %></h3>
+
+
+<p align="center"><strong>category</strong> : <%= @category.name %></p>
+<!--<%#@category.articles.each do |article| %> this was when we didn't have a pagination in show page.-->
+<%@articles.each do |article| %>        <!--Because we assigned @articles with categories.articles and gave pagination to @articles instance -->
+
+    <table align="center">
     <tr>
       <td><%=link_to article.title, article_path(article) %></td>
     </tr>
   </table>
 <% end %>
+<h3 align="center"><%=will_paginate @articles %></h3>
+<div align="right", style="padding-right: 40px"><%=button_to 'edit category', edit_category_path(@category), method: :get if logged_in? && current_user.admin?%></div>
 <%=link_to "<<BACK", :back %>

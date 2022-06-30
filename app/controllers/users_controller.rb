@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :edit, :destroy]
-  before_action :require_user, only: [:edit, :update]
-  before_action :user_crud_authorization, only: [:edit, :update]
+  before_action :require_user, only: [:edit, :update, :destroy]
+  before_action :user_crud_authorization, only: [:edit, :update, :destroy]
 
 
   def show
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
 
   def create
-    debugger
+    # debugger
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id

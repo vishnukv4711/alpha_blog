@@ -4,8 +4,12 @@
 <%end %>
 <h1 align="center">LISTING ALL ARTICLES </h1>
 <%#debugger %>
+
+
 <h3 align="center"><%=will_paginate @articles %></h3>
-<% if @articles.empty? %>
+
+
+  <% if @articles.empty? %>
   <h1 align="center">NO ARTICLES TO SHOW</h1>
 
 <% else %>

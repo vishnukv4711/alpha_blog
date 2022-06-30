@@ -4,7 +4,7 @@
 <%end %>
 <h1 align="center">Category listing</h1>
 <br><br><br><br><br>
-<h3 align="center"><%= will_paginate %></h3>
+<h3 align="center"><%= will_paginate @categories%></h3>
 <table align="center">
   <thead>
     <th>Categories</th>
@@ -13,10 +13,22 @@
     <%@categories.each do |category|%>
       <tr>
         <td><a href=<%= category_path(category.id) %>><%=category.name %></a></td>
+        <td><%=pluralize(category.articles.count,"article") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <h3 align="center"><%=button_to "CREATE CATEGORY", new_category_path, method: :get if logged_in? && current_user.admin?%></h3>
+<table>
+  <tr>
+    <%unless current_user %>
+      <td><%=button_to 'SIGN UP', signup_path ,method: :get%></td>
+      <td><%=button_to 'LOG IN', login_path, method: :get %></td>
+    <%end%>
+    <% if logged_in?%>
+      <td><%=button_to 'LOG OUT', logout_path,method: :delete%></td>
+    <%end %>
+  </tr>
+</table>
 <%=link_to "<<BACK", :back %>
 <h3 align="center"><%= will_paginate %></h3>
